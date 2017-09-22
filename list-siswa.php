@@ -1,23 +1,47 @@
-<?php include("config.php"); ?>
+<?php include("config.php");
+// mengaktifkan session
+session_start();
+
+// cek apakah user telah login, jika belum login maka di alihkan ke halaman login
+if($_SESSION['status'] !="login"){
+	header("location:index.php");
+}
+
+?>
 
 <!DOCTYPE html>
 <html>
 <head>
 	<title>Pendaftaran Siswa Baru | Tugas Web 2</title>
+	<link rel="stylesheet" type="text/css" href="style2.css">
+	<link rel="shortcut icon" type="image/x-icon" href="b.jpg">
 </head>
 
 <body>
-	<header>
-		<h2 align="center">Siswa yang sudah mendaftar</h2>
-	</header>
+<div class="wrap">
+	<div class="header">
+	<center><h2><b>TUGAS PEMROGRAMAN WEB 2</b><br>
+	Oleh : Bangbang (12111010)</h2></center>
+	<br>
+	</div>
+	<div class="menu">
+	<ul>
+	<li style="border-left: 1px solid #e1e1e1"><a href="logout.php"><b>Logout</b></a></li>
+	</ul>
+</div>
+	<div class="badan">
+	<div class="sidebar"></div>
+	<div class="content">
+	<br>
+		<h2 align="center">Tabel Daftar Data Siswa</h2>
 
 	<nav>
-		<a href="form-daftar.php">[+] Tambah Baru</a>
+		<button><a href="form-daftar.php">&nbsp;<b>[+] Tambah Baru</b>&nbsp;</a></button>
 	</nav>
 
 	<br>
 
-	<table border="1" align="center">
+	<table border="1">
 	<thead>
 		<tr>
 			<th>No</th>
@@ -57,7 +81,13 @@
 	</tbody>
 	</table>
 
-	<p>Total: <?php echo mysqli_num_rows($query) ?></p>
-
+	<p align="center">Jumlah Total Siswa : <?php echo mysqli_num_rows($query) ?></p>
+	<br/>
+<br/>
+</div>
+</div>
+<div class="clear"></div>
+<div class="footer"><p align="center">&copy; Bangbang TIF STT-Bandung 2017</p></div>
+</div>
 	</body>
-</html>
+</html1>
